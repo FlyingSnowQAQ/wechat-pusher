@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>雕龙绣虎 · 科技通信风排版示例</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #eef2f7;
+    padding: 20px 0;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .article {
+    max-width: 640px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .article-inner { padding: 0 20px 30px; }
+  
+  /* ── 标题区 ── */
+  .title-section {
+    text-align: center;
+    padding: 28px 0 18px;
+    position: relative;
+  }
+  .title-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -20px; right: -20px;
+    height: 4px;
+    background: linear-gradient(90deg, #1a73e8 0%, #00acc1 50%, #1a73e8 100%);
+  }
+  .title-section .col-tag {
+    display: inline-block;
+    padding: 3px 14px;
+    background: linear-gradient(135deg, #1a73e8, #2979ff);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .title-section h1 {
+    font-size: 21px;
+    font-weight: 700;
+    color: #1a2332;
+    line-height: 1.55;
+    margin: 0 0 12px;
+    letter-spacing: 0.3px;
+  }
+  .title-section .meta {
+    font-size: 12px;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .title-section .meta .dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: #cbd5e1;
+  }
+  .title-section .divider {
+    width: 48px; height: 3px;
+    background: linear-gradient(90deg, #1a73e8, #00acc1);
+    border-radius: 2px;
+    margin: 14px auto 0;
+  }
+  
+  /* ── 正文 ── */
+  .content p {
+    margin: 0.75em 0;
+    font-size: 15px;
+    line-height: 1.9;
+    color: #334155;
+    letter-spacing: 0.2px;
+  }
+  
+  /* ── 小标题 ── */
+  .content h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a2332;
+    margin: 1.5em 0 0.6em 0;
+    line-height: 1.5;
+    padding-left: 14px;
+    position: relative;
+  }
+  .content h2::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 4px; bottom: 4px;
+    width: 3px;
+    background: linear-gradient(180deg, #1a73e8, #00acc1);
+    border-radius: 2px;
+  }
+
+  /* ── 数据高亮卡 ── */
+  .data-card {
+    margin: 1.2em 0;
+    padding: 16px 18px;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+    border-radius: 10px;
+    border-left: 3px solid #1a73e8;
+  }
+  .data-card .data-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a73e8;
+    line-height: 1.2;
+  }
+  .data-card .data-label {
+    font-size: 13px;
+    color: #475569;
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+
+  /* ── 引用框 ── */
+  .quote-box {
+    margin: 1.2em 0;
+    padding: 14px 18px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-left: 3px solid #00acc1;
+  }
+  .quote-box p {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.85;
+    margin: 0;
+    font-style: italic;
+  }
+  .quote-box .quote-source {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #94a3b8;
+    font-style: normal;
+  }
+
+  /* ── 要点框 ── */
+  .key-point {
+    margin: 1.2em 0;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, #fff8f0, #fff3e0);
+    border-radius: 8px;
+    border-left: 3px solid #ff6d00;
+  }
+  .key-point p {
+    font-size: 14px;
+    color: #3d2e1a;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* ── 金句区 ── */
+  .gold-quote {
+    margin: 1.5em 0;
+    padding: 18px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #faf6eb, #fdf8ee);
+    border-radius: 10px;
+    border: 1px solid #e8dcc8;
+  }
+  .gold-quote p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #8b6914;
+    line-height: 1.8;
+    margin: 0;
+    letter-spacing: 0.5px;
+  }
+  .gold-quote .gold-icon {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* ── 配图 ── */
+  .img-wrap {
+    text-align: center;
+    margin: 1.2em 0;
+  }
+  .img-wrap img {
+    max-width: 100%;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .img-caption {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #94a3b8;
+    text-align: center;
+  }
+
+  /* ── 互动区 ── */
+  .interact-box {
+    margin: 1.5em 0 1em;
+    padding: 16px 18px;
+    background: linear-gradient(135deg, #f0f5ff, #e3f0ff);
+    border-radius: 10px;
+  }
+  .interact-box .interact-icon {
+    display: inline-block;
+    padding: 2px 10px;
+    background: #1a73e8;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .interact-box p {
+    font-size: 14px;
+    color: #1a365d;
+    line-height: 1.85;
+    margin: 0;
+  }
+
+  /* ── 来源标注 ── */
+  .source-line {
+    font-size: 12px;
+    color: #94a3b8;
+    margin: 0.3em 0 0.8em;
+    padding-left: 12px;
+    border-left: 2px solid #e2e8f0;
+  }
+
+  /* ── 分隔线 ── */
+  .section-divider {
+    margin: 1.5em 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .section-divider .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+  }
+  .section-divider .icon {
+    color: #94a3b8;
+    font-size: 14px;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    margin-top: 2em;
+    padding: 24px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f0f7ff, #e3f0ff);
+    border-radius: 12px;
+    border: 1px solid #d0e1fd;
+  }
+  .cta-section .brand {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1a2332;
+    letter-spacing: 3px;
+  }
+  .cta-section .slogan {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #64748b;
+    letter-spacing: 1px;
+  }
+  .cta-section .cta-divider {
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(90deg, #1a73e8, #00acc1);
+    margin: 12px auto;
+    border-radius: 1px;
+  }
+  .cta-section .cta-btns {
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .cta-section .cta-btns span {
+    display: inline-block;
+    padding: 6px 22px;
+    font-size: 13px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .cta-section .cta-btns .btn-like {
+    background: #e8f0fe;
+    color: #1a73e8;
+  }
+  .cta-section .cta-btns .btn-follow {
+    background: linear-gradient(135deg, #1a73e8, #2979ff);
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(26,115,232,0.25);
+  }
+
+  /* ── 烽向标卡片 ── */
+  .news-card {
+    margin: 1em 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  }
+  .news-card .card-header {
+    padding: 11px 16px;
+    background: linear-gradient(135deg, #1a73e8, #2979ff);
+  }
+  .news-card .card-header p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.55;
+  }
+  .news-card .card-body {
+    padding: 10px 16px;
+    background: #f8fafc;
+  }
+  .news-card .card-body p {
+    margin: 0.45em 0;
+    font-size: 15px;
+    line-height: 1.85;
+    color: #334155;
+  }
+  .news-card .card-comment {
+    padding: 10px 16px;
+    background: #f0f5ff;
+    border-top: 1px solid #e2e8f0;
+  }
+  .news-card .card-comment p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #475569;
+  }
+  .news-card .card-comment .comment-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    margin-right: 4px;
+    background: #1a73e8;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 3px;
+  }
+  .news-card .card-foot {
+    padding: 5px 16px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+  }
+  .news-card .card-foot p {
+    margin: 0;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  @media (max-width: 640px) {
+    .article { border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="article">
+<div class="article-inner">
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- 示例1：龙虎斗 / 绣花针 — 标准文章排版        -->
+  <!-- ════════════════════════════════════════════════ -->
+
+  <!-- 标题区 -->
+  <div class="title-section">
+    <span class="col-tag">🐉 龙虎斗</span>
+    <h1>烽火与华为的"光"之战：谁在定义下一代网络的底色？</h1>
+    <div class="meta">
+      <span>雕龙绣虎</span>
+      <span class="dot"></span>
+      <span>2026年6月16日</span>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="content">
+
+    <!-- 首段：大字号强调 -->
+    <p style="font-size:16px;color:#1a2332;font-weight:500;">2025年全球光网络设备市场规模突破200亿美元，增长最快的细分赛道是400G骨干网和50G PON接入。但真正让圈内人兴奋的，不是规模数字，而是格局的松动。</p>
+
+    <!-- 数据高亮卡 -->
+    <div class="data-card">
+      <div class="data-number">40% → 15%</div>
+      <div class="data-label">华为在运营商光网络集采中的份额变化（2022→2025），烽火三年间将中标份额从不到15%提升至约25%</div>
+    </div>
+
+    <p>过去十年，华为在光通信领域一家独大，市场份额一度超过40%。但2025-2026年，一个不容忽视的信号出现：烽火在运营商集采中的份额，正以每年3-5个百分点的速度攀升。这背后，不是简单的价格战，而是一场关于技术路线和生态话语权的暗战。</p>
+
+    <!-- 小标题 -->
+    <h2>技术路线的"四两拨千斤"</h2>
+
+    <p>先说技术层面。光通信的"舒适区"曾集中在长距离传输，华为凭借自研光芯片和系统集成优势，筑起高墙。但烽火做了一件"四两拨千斤"的事：在5G承载网领域，率先推出支持全光交叉连接（OXC）的商用设备，配合自研的硅光模块，将功耗降低30%以上。</p>
+
+    <!-- 配图占位 -->
+    <div class="img-wrap">
+      <img src="https://picsum.photos/seed/optical/600/350" alt="光网络示意图" style="width:100%;max-width:600px;">
+    </div>
+    <p class="img-caption">▲ 光网络设备部署示意图</p>
+
+    <p>根据中国移动2025年SPN设备集采结果，烽火在新建部分的中标份额已接近25%，而三年前这个数字还不到15%。一个行业共识正在形成："光"不再只是华为的护城河，烽火用"全光化"这张牌，撕开了一道口子。</p>
+
+    <h2>国产替代：从"可选项"到"必选项"</h2>
+
+    <!-- 数据高亮卡（双数据） -->
+    <div class="data-card" style="border-left-color:#00acc1;">
+      <div class="data-number">80%<span style="font-size:14px;font-weight:400;color:#64748b;"> 国产化率</span></div>
+      <div class="data-label">烽火自研EDFA光放大器核心芯片，在国内设备商中属于第一梯队</div>
+    </div>
+
+    <p>这背后是国产替代大潮的强力助推。运营商作为"国家队"，既要保网络质量，也要防供应链风险。华为固然强大，但"所有鸡蛋放一个篮子"的隐患，在经历了过去几年的芯片波动后，没人敢再忽视。烽火背靠央企中国信科，在光棒、光纤、光芯片等核心环节均有自主产能。</p>
+
+    <!-- 引用框 -->
+    <div class="quote-box">
+      <p>在"安全可控"成为运营商的选型铁律后，烽火从一个"可选项"变成了"必选项"。</p>
+      <div class="quote-source">—— 行业分析</div>
+    </div>
+
+    <h2>谁在追赶，谁在领跑？</h2>
+
+    <p>但局面远未到"二分天下"的程度。华为的反击同样凌厉：在FTTR（光纤到房间）市场，华为凭借家庭Wi-Fi 7与全光终端的捆绑，牢牢锁住家宽入口，烽火的产品更多在政企和边缘接入侧渗透。更关键的是，在面向算力网络的新一代全光底座上，华为的"算光融合"方案已率先进入现网试点，烽火还在追赶路线定义权。</p>
+
+    <!-- 金句 -->
+    <div class="gold-quote">
+      <span class="gold-icon">✦</span>
+      <p>这场"光"之战的核心，不仅是市场份额的争夺，更是对"下一代网络技术标准"的定义权之争。</p>
+    </div>
+
+    <p>从产业角度看，烽火的崛起，是通信国产化从"低端替代"迈向"高端博弈"的缩影。过去我们说国产替代，多半在讲光纤光缆这种"搬砖"的活儿，现在烽火在OXC设备、50G PON光模块这些"砌墙"的领域，开始和华为正面过招。</p>
+
+    <!-- 要点框 -->
+    <div class="key-point">
+      <p><strong>📌 核心判断：</strong>通信圈的潜规则从来不是"谁技术最强谁赢"，而是"谁让客户最安心的技术方案，谁赢"。烽火恰好踩中了运营商从"追求极致性能"到"追求极致安全"的心态拐点。</p>
+    </div>
+
+    <!-- 分隔线 -->
+    <div class="section-divider">
+      <span class="line"></span>
+      <span class="icon">◈</span>
+      <span class="line"></span>
+    </div>
+
+    <h2>写在最后</h2>
+
+    <p>烽火和华为的竞争，本质上是一场"光"的底色之争——华为要光变成智能的血管，烽火要让光变成安全的骨架。而运营商，正用集采订单投出自己的选票。这场战役的结果，将直接决定未来十年，谁能在国产替代的"全光时代"里，坐稳第二把交椅。</p>
+
+    <!-- 互动区 -->
+    <div class="interact-box">
+      <span class="interact-icon">💬 讨论</span>
+      <p>你认为在国产替代的大背景下，烽火能否在光通信领域真正挑战华为的统治地位？哪些技术赛道最有可能成为转折点？</p>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="brand">雕 龙 绣 虎</div>
+    <div class="cta-divider"></div>
+    <div class="slogan">📡 一个通信老炮的技术笔记</div>
+    <div class="cta-btns">
+      <span class="btn-like">👍 点个在看</span>
+      <span class="btn-follow">+ 关注</span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- 示例2：烽向标 — 新闻周报排版                 -->
+  <!-- ════════════════════════════════════════════════ -->
+
+  <div class="title-section" style="margin-top:40px;padding-top:30px;">
+    <span class="col-tag" style="background:linear-gradient(135deg,#00acc1,#26c6da);">📡 烽向标</span>
+    <h1>烽向标 | 2026年6月第3周</h1>
+    <div class="meta">
+      <span>雕龙绣虎</span>
+      <span class="dot"></span>
+      <span>2026年6月21日</span>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="content">
+
+    <!-- 新闻卡片 1 -->
+    <div class="news-card">
+      <div class="card-header">
+        <p>中国移动启动400G骨干网二期集采，烽火中标份额超预期</p>
+      </div>
+      <div class="card-body">
+        <p>中国移动近日发布400G OTN骨干网二期集采结果，本期规模约1500套设备，覆盖全国31个省份。烽火在核心汇聚层中标份额达28%，超越市场预期。</p>
+      </div>
+      <div class="card-comment">
+        <p><span class="comment-tag">◆ 烽评</span>400G是当前光通信最热的赛道，烽火能在华为主场的核心层拿到近三成份额，说明其全光交叉技术已获得运营商认可。</p>
+      </div>
+      <div class="card-foot">
+        <p>📎 来源：C114通信网</p>
+      </div>
+    </div>
+
+    <!-- 新闻卡片 2 -->
+    <div class="news-card">
+      <div class="card-header">
+        <p>工信部：5G基站总数突破450万，向5G-A演进加速</p>
+      </div>
+      <div class="card-body">
+        <p>截至2026年5月底，我国5G基站总数达到452万个，占全球60%以上。工信部近日发文推动5G-Advanced（5.5G）商用部署，预计2027年实现主要城市覆盖。</p>
+      </div>
+      <div class="card-comment">
+        <p><span class="comment-tag">◆ 烽评</span>450万基站是什么概念？比全球其他国家的总和还多。但数量之外，真正值得关注的是5G-A带来的网络能力跃升——从"连接"到"感知"。</p>
+      </div>
+      <div class="card-foot">
+        <p>📎 来源：工信部官网</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 样式说明 -->
+  <div style="margin-top:40px;padding:20px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;">
+    <p style="font-size:13px;color:#64748b;margin:0 0 8px;font-weight:600;">🎨 排版元素清单</p>
+    <ul style="font-size:12px;color:#94a3b8;line-height:2;margin:0;padding-left:18px;">
+      <li><strong>标题区</strong>：渐变色顶条 + 栏目标签 + 金色分割线</li>
+      <li><strong>小标题</strong>：左蓝色竖线 + 深色字体</li>
+      <li><strong>数据卡</strong>：蓝色渐变背景 + 大字号数字 + 左蓝色边框</li>
+      <li><strong>引用框</strong>：浅灰底 + 左青色边框 + 斜体</li>
+      <li><strong>金句区</strong>：浅金色背景 + 暖色高亮</li>
+      <li><strong>要点框</strong>：暖色渐变背景 + 橙色左边框</li>
+      <li><strong>配图</strong>：圆角 + 轻微阴影</li>
+      <li><strong>互动区</strong>：蓝色渐变背景 + 标签式标题</li>
+      <li><strong>新闻卡片</strong>：蓝底白字标题 + 灰底正文 + 浅蓝评论 + 来源</li>
+      <li><strong>CTA</strong>：蓝色渐变背景按钮 + 品牌名 + 分割线</li>
+    </ul>
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "wechat-pusher",
+  "version": "3.0.0",
+  "description": "雕龙绣虎公众号自动推送系统 - AI通信行业故事",
+  "main": "push.js",
+  "dependencies": {
+    "abort-controller": "^3.0.0",
+    "dotenv": "^16.0.0",
+    "iconv-lite": "^0.7.2",
+    "node-fetch": "^2.7.0",
+    "sharp": "^0.34.5"
+  }
+}

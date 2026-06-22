@@ -1,0 +1,12 @@
+node_modules/
+.env
+state.json
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+article_images/
+preview_output.html
+.DS_Store
+Thumbs.db
